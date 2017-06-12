@@ -1,0 +1,20 @@
+<% include header %>
+    <form method="post" action="/search">
+        <input type="text" name="searchedit" value="<%= keyword %>" />
+        <input type="submit" value="Search" />
+    </form>
+    <% function asmHighlight(element, index, array) { %>
+        <%= element %>
+            <% } %>
+                <% if(result) { %>
+                    <% for( i=0; i< result.length; i++ ) {%>
+                        <div>
+                            <% result[i].highlight.info.forEach(asmHighlight) %>
+                                <br>
+                                <a href="<%=result[i]._source.url %>" target="_blank">
+                                    <%= result[i]._source.url %>
+                                </a>
+                        </div>
+                        <% } %>
+                            <% } %>
+                                <% include footer %>
