@@ -21,6 +21,7 @@ router.post('/', function (req, res, next) {
     index: 'dfsearch',
     type: 'web',
     body: {
+      "_source": ["url"],
       'query': {
         'bool': {
           'should': [
@@ -51,7 +52,7 @@ router.post('/', function (req, res, next) {
       },
       "highlight": {
         "fields": {
-          "info": {"fragment_size": 20, "number_of_fragments": 3}
+          "info.chinese": { "fragment_size": 20, "number_of_fragments": 3 }
         }
       }
     }
